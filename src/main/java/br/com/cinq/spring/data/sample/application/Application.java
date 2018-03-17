@@ -7,12 +7,13 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
  * Greeting Service.
  */
 @SpringBootApplication
-@ComponentScan(basePackages = { "br.com.cinq.spring.data.sample" })
+@ComponentScan(basePackages = { "br.com.cinq.spring.data.sample.resource" })
 @EntityScan(basePackages = { "br.com.cinq.spring.data.sample.entity" })
 @EnableJpaRepositories("br.com.cinq.spring.data.sample.repository")
 @EnableAutoConfiguration
