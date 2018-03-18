@@ -7,15 +7,14 @@ import org.glassfish.jersey.servlet.ServletProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * Register Jersey modules
- * @author Adriano Kretschmer
+ * @author marina-sm
  */
 @Component
 @ApplicationPath("rest")
 public class Config extends ResourceConfig {
 
     public Config() {
-        		packages("br.com.cinq.spring.data.sample.resource");
-        		property(ServletProperties.FILTER_FORWARD_ON_404, true);
+      packages("br.com.cinq.spring.data.sample.resource");
+      property(ServletProperties.FILTER_FORWARD_ON_404, true);
     }
 }

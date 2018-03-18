@@ -15,7 +15,7 @@ import br.com.cinq.spring.data.sample.entity.Country;
 import br.com.cinq.spring.data.sample.repository.CountryRepository;
 
 /**
- * Eye candy: implements a sample in using JpaRespositories
+ * @author marina-sm
  */
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -27,7 +27,6 @@ public class CountryRepositoryTest {
 
     @Test
     public void testQueryCity() {
-
         assertNotNull(dao);
         Country country=dao.findById(1L);
         assertThat(country.getName()).isEqualTo("Brazil");

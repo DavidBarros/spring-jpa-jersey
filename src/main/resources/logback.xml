@@ -13,9 +13,9 @@
 
 	<appender name="FileLog"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${LOG_PATH}/kafka-sample.log</file>
+		<file>${LOG_PATH}/sample.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${LOG_PATH}/kafka-sample.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+			<fileNamePattern>${LOG_PATH}/sample.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
 			<maxHistory>${MAX_HISTORY_DAYS}</maxHistory>
 		</rollingPolicy>
 		<append>true</append>
@@ -26,10 +26,10 @@
 
 
 	<logger name="br.com.cinq" level="INFO" />
-
-
 	<root level="WARN">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="FileLog" />
 	</root>
 </configuration>
+
+

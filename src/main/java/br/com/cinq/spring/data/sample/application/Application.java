@@ -8,8 +8,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
- * Greeting Service.
+ * @author marina-sm
  */
+
 @SpringBootApplication
 @EnableJpaRepositories(basePackages= {"br.com.cinq.spring.data.sample.repository"})
 @ComponentScan(basePackages = { "br.com.cinq.spring.data.sample.*"})

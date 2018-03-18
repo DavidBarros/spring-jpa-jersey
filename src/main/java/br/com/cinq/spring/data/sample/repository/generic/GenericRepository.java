@@ -20,7 +20,7 @@ public abstract class GenericRepository<T> {
 	}
 
 	public T findById(Long id) {
-		return em.find(persistedClass, id);
+		return this.em.find(persistedClass, id);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -29,11 +29,11 @@ public abstract class GenericRepository<T> {
 		sb.append("SELECT T FROM ");
 		sb.append(persistedClass.getSimpleName());
 		sb.append(" T ");
-		return em.createQuery(sb.toString(), persistedClass).getResultList();
+		return this.em.createQuery(sb.toString(), persistedClass).getResultList();
 	}
 
 	protected EntityManager getEm() {
-		return em;
+		return this.em;
 	}
 
 	protected void setEm(EntityManager em) {
@@ -42,12 +42,12 @@ public abstract class GenericRepository<T> {
 
 	@Transactional(rollbackOn = Throwable.class)
 	public void insert(T entity) {
-		em.persist(entity);
+		this.em.persist(entity);
 	}
 
 	@Transactional(rollbackOn = Throwable.class)
 	public void insert(List<T> entities) {
-		entities.forEach(entity -> em.persist(entity));
+		entities.forEach(entity -> this.em.persist(entity));
 	}
 
 }

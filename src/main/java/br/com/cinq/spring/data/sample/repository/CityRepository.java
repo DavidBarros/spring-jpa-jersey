@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository;
 import br.com.cinq.spring.data.sample.entity.City;
 import br.com.cinq.spring.data.sample.repository.generic.GenericRepository;
 
+/**
+ * @author marina-sm
+ */
+
 @Repository
 public class CityRepository extends GenericRepository<City> {
 

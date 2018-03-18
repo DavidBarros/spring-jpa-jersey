@@ -15,6 +15,9 @@ import br.com.cinq.spring.data.sample.entity.Country;
 import br.com.cinq.spring.data.sample.repository.CountryRepository;
 import br.com.cinq.spring.data.sample.representation.CountryPack;
 
+/**
+ * @author marina-sm
+ */
 @Component
 @Path("/countries")
 public class CountryResource {
@@ -26,13 +29,13 @@ public class CountryResource {
 	@Path("/{id}")
 	@Produces("application/json")
 	public Response findById(@PathParam(value = "id") Long id) {
-		return Response.ok(countryRepository.findById(id)).build();
+		return Response.ok(this.countryRepository.findById(id)).build();
 	}
 
 	@GET
 	@Produces("application/json")
 	public Response findAllbyCountry() {
-			return Response.ok(countryRepository.findAll()).build();
+			return Response.ok(this.countryRepository.findAll()).build();
 	}
 	
 	@POST
@@ -40,14 +43,14 @@ public class CountryResource {
 	@Produces("application/json")
 	@Path("/load")
 	public Response insertCountries(CountryPack pack) {
-		countryRepository.insert(pack.getCountryList());
+		this.countryRepository.insert(pack.getCountryList());
 		return Response.ok().build();
 	}
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response insertCountry(Country country) {
-		countryRepository.insert(country);
+		this.countryRepository.insert(country);
 		return Response.ok().build();
 	}
 }

@@ -11,9 +11,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * @since 17/03/2018
  * @author marina-sm
- *
  */
 
 @Entity
@@ -21,9 +19,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Country implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6121214410106985112L;
 
 	@Id

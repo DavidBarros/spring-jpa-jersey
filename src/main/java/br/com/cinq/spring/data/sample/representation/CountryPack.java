@@ -7,12 +7,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import br.com.cinq.spring.data.sample.entity.Country;
 
+/**
+ * 
+ * @author marina-sm
+ *
+ */
 @XmlRootElement
 public class CountryPack implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -165665120456873425L;
 	
 	private List<Country> countryList;
@@ -28,7 +30,4 @@ public class CountryPack implements Serializable{
 	protected static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
-	
 }

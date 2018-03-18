@@ -16,27 +16,30 @@ import br.com.cinq.spring.data.sample.entity.City;
 import br.com.cinq.spring.data.sample.repository.CityRepository;
 import br.com.cinq.spring.data.sample.representation.CityPack;
 
+/**
+ * @author marina-sm
+ */
 @Component
 @Path("/cities")
 public class CityResource {
 
 	@Autowired
 	CityRepository cityRepository;
-
+	
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
 	public Response findById(@PathParam(value = "id") Long id) {
-		return Response.ok(cityRepository.findById(id)).build();
+		return Response.ok(this.cityRepository.findById(id)).build();
 	}
 
 	@GET
 	@Produces("application/json")
 	public Response findAllbyCountry(@QueryParam("country") String country) {
 		if (country == null) {
-			return Response.ok(cityRepository.findAll()).build();
+			return Response.ok(this.cityRepository.findAll()).build();
 		} else {
-			return Response.ok(cityRepository.findCitiesByCountryName(country)).build();
+			return Response.ok(this.cityRepository.findCitiesByCountryName(country)).build();
 		}
 	}
 	
@@ -45,14 +48,14 @@ public class CityResource {
 	@Produces("application/json")
 	@Path("/load")
 	public Response insertCities(CityPack pack) {
-		cityRepository.insert(pack.getCityList());
+		this.cityRepository.insert(pack.getCityList());
 		return Response.ok().build();
 	}
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response insertCity(City city) {
-		cityRepository.insert(city);
+		this.cityRepository.insert(city);
 		return Response.ok().build();
 	}
 }

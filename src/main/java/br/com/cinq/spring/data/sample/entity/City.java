@@ -15,18 +15,13 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * @since 17/03/2018
  * @author marina-sm
- *
  */
 @Entity
 @Table(name="CITY")
 @XmlRootElement
 public class City implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6808115250484074062L;
 
 	@Id
