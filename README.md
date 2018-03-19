@@ -1,4 +1,4 @@
-#spring-jpa-jersey
+# spring-jpa-jersey
 
 sample application
 SpringBoot updated to 2.0.0.RELEASE
@@ -17,7 +17,7 @@ mvn spring-boot:run
 
 ## Loading Data Service at
 
-###Countries:
+### Countries:
 ```
 localhost:8090/
 ```
@@ -26,7 +26,7 @@ Body JSON Sample:
 {  
    "countryList":[  
       {  
-         "name":"CHINA"
+         "name":"China"
       },
       {  
          "name":"South Korea"
@@ -38,7 +38,7 @@ Body JSON Sample:
 }
 ```
 
-###Cities:
+### Cities:
 ```
 localhost:8090/rest/cities/load
 ```
@@ -50,21 +50,21 @@ Body JSON Sample:
          "name":"Macau",
          "country":{  
             "id":4,
-            "name":"CHINA"
+            "name":"China"
          }
       },
       {  
          "name":"Beijing",
          "country":{  
             "id":4,
-            "name":"CHINA"
+            "name":"China"
          }
       },
       {  
          "name":"Shanghai",
          "country":{  
             "id":4,
-            "name":"CHINA"
+            "name":"China"
          }
       }
    ]
@@ -79,15 +79,15 @@ GRANT ALL PRIVILEGES ON sample.* TO 'dbuser'@'localhost';
 ```
 after executing src/main/resources/sql/db_init.mysql.sql
 
-##Test Coverage
+## Test Coverage
 
 printscreen from sonar sonarqube added to root folder:
 ```
 coverage.png
 ```
-wich contains the test coverage percentage obtained with jacoco plugin.
+The file contain the test coverage percentage with jacoco plugin.
 
-###the test coverage can be obtained with the following maven command lines:
+### the test coverage can be obtained with the following maven command lines:
 ```
 mvn clean test
 mvn sonar:sonar
