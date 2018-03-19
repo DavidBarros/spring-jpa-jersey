@@ -1,84 +1,94 @@
-# Skills in Spring, Data manipulation and JAX RS
-Here you will find a scaffold of a project that aims to expose a REST service to list cities.
-You need to upgrade the project to the newest versions and implement this service using any necessary means.
+#spring-jpa-jersey
 
-- Java (preferably Java 8 and Functional programming as much as possible)
-- RESTFull service
-- Data manipulation layer
-- Spring-boot (upgrade to the latest version)
-- Maven
+sample application
+SpringBoot updated to 2.0.0.RELEASE
+removed .yml configuration files
+added application.properties
 
-# Database
-The actual implementation uses H2 in memory as the database. You will find also the scripts 
-for MySQL. The scripts insert a few entries in each table.
+## Running the project
 
-# Proposed exercise
-The candidate must:
-- Create Entity classes for the tables, including relationships
-- Create the Data manipulation layer. Feel free to use structure or framework you like (JPA, JDBC, Spring Data, etc).
-- Create a GET REST service to retrieve the list of cities in the database, and return them as a JSON object.
-- The service may receive the query param "country" as a String, to restrict the search. The parameter may be part of the Country name
-   http://server:port/rest/cities[?country=name]
+On root folder:
 
-- Create an operation to load data into the database (Here you're free to be creative. You can load data from a simple CSV, a spreadsheet, a rest service, etc...)
+```
+mvn clean compile
+mvn package
+mvn spring-boot:run
+```
 
-Feel free to modify the files included, upgrade frameworks, add or remove packages, in every aspect you want. Just check the note regarding JUnit tests below.
+## Loading Data Service at
 
-# Expected results
-After the implementation, the application should run after the following command line:
+###Countries:
+```
+localhost:8090/
+```
+Body JSON Sample:
+```
+{  
+   "countryList":[  
+      {  
+         "name":"CHINA"
+      },
+      {  
+         "name":"South Korea"
+      },
+      {  
+         "name":"Thailand"
+      }
+   ]
+}
+```
 
-	java -jar target/spring-jpa-jersey.jar
-    
-or 
-
-    mvn spring-boot:run
-    
-or deploy on Tomcat, or Jetty or an Application Server, as long as you include instructions for the deploy.
-
-
-Then, open a browser and type :
-
-    http://localhost:8090/rest/cities?country=Uni
-
-
-It must return, at least the following (ids may vary) :
-
-    [
-        {
-            "id":86,
-            "name":"New York",
-            "country":{
-                "id":2,
-                "name":"United States"
-            }
-        },
-        {
-            "id":87,
-            "name":"Los Angeles",
-            "country":{
-                "id":2,
-                "name":"United States"
-            }
-        },
-        {
-            "id":88,
-            "name":"Atlanta",
-            "country":{
-                "id":2,
-                "name":"United States"
-            }
-        }
-    ]
-
-
-# Unit tests
-
-Included you will find JUnit tests, with commented lines. Those tests must run after the lines
-are uncommented. 
-
-## Challenge
-
-Post the percentage of line covered by tests of your application.
+###Cities:
+```
+localhost:8090/rest/cities/load
+```
+Body JSON Sample:
+```
+{  
+   "cityList":[  
+      {  
+         "name":"Macau",
+         "country":{  
+            "id":4,
+            "name":"CHINA"
+         }
+      },
+      {  
+         "name":"Beijing",
+         "country":{  
+            "id":4,
+            "name":"CHINA"
+         }
+      },
+      {  
+         "name":"Shanghai",
+         "country":{  
+            "id":4,
+            "name":"CHINA"
+         }
+      }
+   ]
+}
+```
+## Database Privileges
+in order to insert values and Auto Generate ID it's required to execute query:
+```
+GRANT ALL PRIVILEGES ON sample.* TO 'dbuser'@'localhost';
 
 
-** PLUS: It would be great if you can come up with unit and integration tests separately in their apropriate building phases.
+```
+after executing src/main/resources/sql/db_init.mysql.sql
+
+##Test Coverage
+
+printscreen from sonar sonarqube added to root folder:
+```
+coverage.png
+```
+wich contains the test coverage percentage obtained with jacoco plugin.
+
+###the test coverage can be obtained with the following maven command lines:
+```
+mvn clean test
+mvn sonar:sonar
+```
